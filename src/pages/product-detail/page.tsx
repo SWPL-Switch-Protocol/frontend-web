@@ -44,10 +44,10 @@ export default function ProductDetail() {
       includedItems: ['Console', 'Joy-Cons (White)', 'Dock', 'HDMI cable', 'Power adapter'],
       neighborhood: 'Williamsburg',
       images: [
-        'https://readdy.ai/api/search-image?query=Nintendo%20Switch%20OLED%20white%20gaming%20console%20front%20view%20on%20clean%20minimal%20white%20surface%20with%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus%20modern%20aesthetic%20pristine%20condition&width=600&height=600&seq=product1-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Nintendo%20Switch%20OLED%20white%20console%20with%20Joy-Cons%20attached%20side%20angle%20view%20on%20minimal%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20details%20contemporary%20style&width=600&height=600&seq=product1-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Nintendo%20Switch%20OLED%20white%20console%20with%20dock%20and%20accessories%20organized%20layout%20on%20clean%20white%20background%20soft%20lighting%20professional%20product%20photography%20high%20quality%20complete%20set%20modern%20aesthetic&width=600&height=600&seq=product1-accessories&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Nintendo%20Switch%20OLED%20white%20console%20original%20box%20and%20packaging%20on%20minimal%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20focus%20modern%20style&width=600&height=600&seq=product1-box&orientation=squarish'
+        'https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1629814249584-bd4d53cf0e7d?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1592107761705-30a1bbc641e7?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '2': {
@@ -65,10 +65,10 @@ export default function ProductDetail() {
       includedItems: ['AirPods Pro', 'Charging case', 'USB-C cable', 'All ear tips (S/M/L)', 'Original box'],
       neighborhood: 'Park Slope',
       images: [
-        'https://readdy.ai/api/search-image?query=Apple%20AirPods%20Pro%20white%20wireless%20earbuds%20in%20charging%20case%20on%20minimal%20beige%20surface%20soft%20lighting%20clean%20product%20photography%20premium%20quality%20sharp%20details%20modern%20style&width=600&height=600&seq=product2-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20AirPods%20Pro%20earbuds%20close%20up%20view%20showing%20design%20details%20on%20clean%20white%20background%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality&width=600&height=600&seq=product2-detail&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20AirPods%20Pro%20with%20all%20ear%20tips%20and%20accessories%20organized%20layout%20on%20minimal%20surface%20soft%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product2-accessories&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20AirPods%20Pro%20original%20box%20and%20packaging%20on%20clean%20white%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20modern%20aesthetic&width=600&height=600&seq=product2-box&orientation=squarish'
+        'https://images.unsplash.com/photo-1603351154351-5cf99bc32f2d?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1629367494173-c78a56567877?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '3': {
@@ -86,10 +86,10 @@ export default function ProductDetail() {
       includedItems: ['PS5 Console', 'DualSense Controller', 'HDMI cable', 'Power cable', 'USB cable'],
       neighborhood: 'Bushwick',
       images: [
-        'https://readdy.ai/api/search-image?query=Sony%20PlayStation%205%20console%20white%20modern%20gaming%20system%20on%20clean%20surface%20with%20controller%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus%20contemporary%20aesthetic&width=600&height=600&seq=product3-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Sony%20PlayStation%205%20console%20side%20view%20showing%20ports%20and%20design%20on%20minimal%20background%20soft%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product3-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Sony%20PlayStation%205%20DualSense%20controller%20white%20wireless%20gamepad%20close%20up%20on%20clean%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality&width=600&height=600&seq=product3-controller&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Sony%20PlayStation%205%20console%20with%20all%20cables%20and%20accessories%20organized%20layout%20on%20minimal%20surface%20soft%20lighting%20professional%20product%20photography%20modern%20style&width=600&height=600&seq=product3-accessories&orientation=squarish'
+        'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1621259182902-8854256ece48?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1622297845775-5ff3fef71d13?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '4': {
@@ -107,10 +107,10 @@ export default function ProductDetail() {
       includedItems: ['Camera body', '18-55mm lens', 'Battery', 'Charger', 'Camera strap', 'Lens cap'],
       neighborhood: 'SoHo',
       images: [
-        'https://readdy.ai/api/search-image?query=Canon%20DSLR%20camera%20professional%20black%20body%20with%20lens%20on%20minimal%20surface%20soft%20natural%20lighting%20clean%20product%20photography%20high%20quality%20sharp%20details%20modern%20photography%20equipment%20aesthetic&width=600&height=600&seq=product4-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Canon%20DSLR%20camera%20top%20view%20showing%20controls%20and%20LCD%20screen%20on%20clean%20white%20background%20soft%20studio%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product4-top&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Canon%20DSLR%20camera%20lens%20close%20up%20showing%20optical%20quality%20on%20minimal%20surface%20soft%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus&width=600&height=600&seq=product4-lens&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Canon%20DSLR%20camera%20with%20battery%20charger%20and%20accessories%20organized%20layout%20on%20clean%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20modern%20aesthetic&width=600&height=600&seq=product4-accessories&orientation=squarish'
+        'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '5': {
@@ -128,10 +128,10 @@ export default function ProductDetail() {
       includedItems: ['iPad Pro 11"', 'USB-C cable', 'Power adapter', 'Original box', 'Documentation'],
       neighborhood: 'Williamsburg',
       images: [
-        'https://readdy.ai/api/search-image?query=Apple%20iPad%20Pro%20silver%20tablet%20device%20on%20clean%20white%20surface%20with%20Apple%20Pencil%20soft%20studio%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20focus%20modern%20minimalist%20aesthetic&width=600&height=600&seq=product5-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20iPad%20Pro%20tablet%20side%20view%20showing%20slim%20design%20on%20minimal%20background%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20modern%20style&width=600&height=600&seq=product5-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20iPad%20Pro%20screen%20display%20showing%20interface%20on%20clean%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20details&width=600&height=600&seq=product5-screen&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20iPad%20Pro%20with%20original%20box%20and%20accessories%20organized%20layout%20on%20minimal%20white%20surface%20soft%20lighting%20professional%20product%20photography%20modern%20aesthetic&width=600&height=600&seq=product5-box&orientation=squarish'
+        'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1555617981-7783d03f3d61?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '6': {
@@ -149,10 +149,10 @@ export default function ProductDetail() {
       includedItems: ['Mountain bike', 'Bike lock', 'Water bottle holder'],
       neighborhood: 'Long Island City',
       images: [
-        'https://readdy.ai/api/search-image?query=Trek%20mountain%20bike%20black%20and%20orange%20outdoor%20bicycle%20on%20clean%20background%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20details%20modern%20sports%20equipment%20aesthetic&width=600&height=600&seq=product6-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Trek%20mountain%20bike%20side%20view%20showing%20frame%20and%20wheels%20on%20minimal%20background%20soft%20studio%20lighting%20professional%20product%20photography%20premium%20quality%20modern%20style&width=600&height=600&seq=product6-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Trek%20mountain%20bike%20close%20up%20showing%20gears%20and%20components%20on%20clean%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus&width=600&height=600&seq=product6-detail&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Trek%20mountain%20bike%20with%20lock%20and%20accessories%20on%20minimal%20background%20soft%20lighting%20professional%20product%20photography%20modern%20sports%20equipment%20aesthetic&width=600&height=600&seq=product6-accessories&orientation=squarish'
+        'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1485965120184-e224f7a1dbfe?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '7': {
@@ -170,10 +170,10 @@ export default function ProductDetail() {
       includedItems: ['50+ Pokémon cards', 'Protective sleeves', 'Storage box'],
       neighborhood: 'Harlem',
       images: [
-        'https://readdy.ai/api/search-image?query=Pokemon%20trading%20card%20collection%20holographic%20rare%20cards%20on%20minimal%20surface%20soft%20lighting%20clean%20product%20photography%20high%20quality%20sharp%20focus%20collectible%20gaming%20cards%20modern%20aesthetic&width=600&height=600&seq=product7-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Pokemon%20trading%20cards%20spread%20out%20showing%20variety%20of%20cards%20on%20clean%20white%20background%20soft%20studio%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product7-spread&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Pokemon%20holographic%20cards%20close%20up%20showing%20shine%20and%20details%20on%20minimal%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus&width=600&height=600&seq=product7-holo&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Pokemon%20card%20collection%20in%20protective%20sleeves%20and%20storage%20box%20on%20clean%20surface%20soft%20lighting%20professional%20product%20photography%20modern%20collectible%20aesthetic&width=600&height=600&seq=product7-storage&orientation=squarish'
+        'https://images.unsplash.com/photo-1613771404721-c5b27c15c385?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1638613067237-b1127ef06c00?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1601987177651-8edfe6c20009?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '8': {
@@ -191,10 +191,10 @@ export default function ProductDetail() {
       includedItems: ['3-seater sofa', 'All cushions', 'Throw pillows (2)'],
       neighborhood: 'Tribeca',
       images: [
-        'https://readdy.ai/api/search-image?query=modern%20beige%20fabric%20sofa%20couch%20furniture%20piece%20on%20clean%20white%20background%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20details%20contemporary%20home%20furniture%20aesthetic&width=600&height=600&seq=product8-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=modern%20fabric%20sofa%20side%20angle%20view%20showing%20design%20and%20cushions%20on%20minimal%20background%20soft%20natural%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product8-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=modern%20fabric%20sofa%20close%20up%20showing%20upholstery%20texture%20and%20quality%20on%20clean%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality&width=600&height=600&seq=product8-detail&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=modern%20fabric%20sofa%20with%20throw%20pillows%20styled%20setup%20on%20minimal%20background%20soft%20lighting%20professional%20product%20photography%20contemporary%20home%20furniture%20aesthetic&width=600&height=600&seq=product8-styled&orientation=squarish'
+        'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1512212621149-107ffe572d2f?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '9': {
@@ -212,10 +212,10 @@ export default function ProductDetail() {
       includedItems: ['MacBook Air M1', 'MagSafe charger', 'USB-C cable', 'Original box'],
       neighborhood: 'Park Slope',
       images: [
-        'https://readdy.ai/api/search-image?query=Apple%20MacBook%20Air%20silver%20laptop%20computer%20on%20minimal%20white%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20focus%20modern%20technology%20aesthetic&width=600&height=600&seq=product9-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20MacBook%20Air%20laptop%20open%20showing%20screen%20and%20keyboard%20on%20clean%20background%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality%20modern%20style&width=600&height=600&seq=product9-open&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20MacBook%20Air%20laptop%20side%20view%20showing%20slim%20profile%20on%20minimal%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20details&width=600&height=600&seq=product9-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Apple%20MacBook%20Air%20with%20charger%20and%20original%20box%20on%20clean%20white%20surface%20soft%20lighting%20professional%20product%20photography%20modern%20technology%20aesthetic&width=600&height=600&seq=product9-accessories&orientation=squarish'
+        'https://images.unsplash.com/photo-1517336714731-489689fd1ca4?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1615750172635-6b17c1503ddc?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1531297461136-82lw9b285bb6?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '10': {
@@ -233,10 +233,10 @@ export default function ProductDetail() {
       includedItems: ['Tent', 'Rainfly', 'Stakes', 'Carrying bag', 'Setup instructions'],
       neighborhood: 'Bronx',
       images: [
-        'https://readdy.ai/api/search-image?query=outdoor%20camping%20tent%20orange%20and%20gray%20portable%20shelter%20on%20clean%20background%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20details%20modern%20outdoor%20gear%20aesthetic&width=600&height=600&seq=product10-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=camping%20tent%20set%20up%20showing%20interior%20space%20on%20minimal%20background%20soft%20lighting%20professional%20product%20photography%20premium%20quality%20modern%20outdoor%20equipment&width=600&height=600&seq=product10-interior&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=camping%20tent%20packed%20in%20carrying%20bag%20with%20stakes%20on%20clean%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20modern%20style&width=600&height=600&seq=product10-packed&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=camping%20tent%20rainfly%20and%20accessories%20organized%20layout%20on%20minimal%20background%20soft%20studio%20lighting%20professional%20product%20photography%20outdoor%20gear%20aesthetic&width=600&height=600&seq=product10-accessories&orientation=squarish'
+        'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '11': {
@@ -254,10 +254,10 @@ export default function ProductDetail() {
       includedItems: ['Headphones', 'Carrying case', 'USB-C cable', 'Audio cable', 'Original box'],
       neighborhood: 'Williamsburg',
       images: [
-        'https://readdy.ai/api/search-image?query=Bose%20wireless%20headphones%20black%20premium%20audio%20equipment%20on%20minimal%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus%20modern%20technology%20aesthetic&width=600&height=600&seq=product11-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Bose%20headphones%20side%20view%20showing%20design%20and%20ear%20cups%20on%20clean%20white%20background%20soft%20natural%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product11-side&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Bose%20headphones%20with%20carrying%20case%20and%20cables%20on%20minimal%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality%20modern%20style&width=600&height=600&seq=product11-case&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=Bose%20headphones%20folded%20in%20carrying%20case%20with%20accessories%20organized%20layout%20on%20clean%20surface%20soft%20lighting%20professional%20product%20photography%20modern%20aesthetic&width=600&height=600&seq=product11-accessories&orientation=squarish'
+        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80'
       ]
     },
     '12': {
@@ -275,10 +275,10 @@ export default function ProductDetail() {
       includedItems: ['Dining table', '4 chairs', 'Table pads'],
       neighborhood: 'Queens',
       images: [
-        'https://readdy.ai/api/search-image?query=wooden%20dining%20table%20set%20with%20four%20chairs%20natural%20wood%20furniture%20on%20clean%20white%20background%20soft%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20details%20modern%20home%20furniture%20aesthetic&width=600&height=600&seq=product12-main&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=wooden%20dining%20table%20top%20view%20showing%20wood%20grain%20and%20finish%20on%20minimal%20background%20soft%20natural%20lighting%20professional%20product%20photography%20premium%20quality&width=600&height=600&seq=product12-top&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=wooden%20dining%20chair%20close%20up%20showing%20design%20and%20construction%20on%20clean%20surface%20soft%20studio%20lighting%20professional%20product%20photography%20high%20quality%20modern%20style&width=600&height=600&seq=product12-chair&orientation=squarish',
-        'https://readdy.ai/api/search-image?query=wooden%20dining%20table%20set%20styled%20with%20chairs%20arranged%20on%20minimal%20background%20soft%20lighting%20professional%20product%20photography%20contemporary%20home%20furniture%20aesthetic&width=600&height=600&seq=product12-styled&orientation=squarish'
+        'https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=800&q=80'
       ]
     }
   };
@@ -286,7 +286,7 @@ export default function ProductDetail() {
   const relatedItems = [
     {
       id: '1',
-      image: 'https://readdy.ai/api/search-image?query=Nintendo%20Switch%20Lite%20yellow%20handheld%20gaming%20console%20on%20clean%20minimal%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus%20modern%20aesthetic&width=400&height=400&seq=related1&orientation=squarish',
+      image: 'https://images.unsplash.com/photo-1593118247619-e2d6f056869e?auto=format&fit=crop&w=400&q=80',
       title: 'Nintendo Switch Lite – Yellow',
       price: 160,
       trustLevel: 'High Trust',
@@ -294,7 +294,7 @@ export default function ProductDetail() {
     },
     {
       id: '2',
-      image: 'https://readdy.ai/api/search-image?query=Sony%20PlayStation%205%20DualSense%20controller%20white%20wireless%20gamepad%20on%20minimal%20beige%20surface%20soft%20lighting%20professional%20product%20photography%20premium%20quality%20sharp%20details%20modern%20style&width=400&height=400&seq=related2&orientation=squarish',
+      image: 'https://images.unsplash.com/photo-1606318801954-d46d46d3360a?auto=format&fit=crop&w=400&q=80',
       title: 'PS5 Controller – White',
       price: 55,
       trustLevel: 'Medium Trust',
@@ -302,7 +302,7 @@ export default function ProductDetail() {
     },
     {
       id: '3',
-      image: 'https://readdy.ai/api/search-image?query=The%20Legend%20of%20Zelda%20Tears%20of%20the%20Kingdom%20Nintendo%20Switch%20game%20case%20on%20clean%20white%20surface%20soft%20natural%20lighting%20professional%20product%20photography%20high%20quality%20sharp%20focus%20modern%20aesthetic&width=400&height=400&seq=related3&orientation=squarish',
+      image: 'https://images.unsplash.com/photo-1612287230217-969b698c0a60?auto=format&fit=crop&w=400&q=80',
       title: 'Zelda: Tears of the Kingdom',
       price: 45,
       trustLevel: 'High Trust',
