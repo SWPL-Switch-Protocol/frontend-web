@@ -412,7 +412,7 @@ export default function ProductDetail() {
                     className="w-full rounded-2xl object-cover"
                     style={{ aspectRatio: '1/1', backgroundColor: '#262626' }}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://via.placeholder.com/600x600/3A3A3A/F5F3F0?text=Image+Not+Available';
+                      e.currentTarget.src = 'https://placehold.co/600x600/3A3A3A/F5F3F0?text=Image+Not+Available';
                     }}
                   />
                 </div>
@@ -435,7 +435,7 @@ export default function ProductDetail() {
                         className="w-full object-cover"
                         style={{ aspectRatio: '1/1' }}
                         onError={(e) => {
-                          e.currentTarget.src = 'https://via.placeholder.com/150x150/3A3A3A/F5F3F0?text=N/A';
+                          e.currentTarget.src = 'https://placehold.co/150x150/3A3A3A/F5F3F0?text=N/A';
                         }}
                       />
                     </button>
@@ -628,7 +628,7 @@ export default function ProductDetail() {
                       className="w-full rounded-xl mb-4 object-cover"
                       style={{ aspectRatio: '1/1' }}
                       onError={(e) => {
-                        e.currentTarget.src = 'https://via.placeholder.com/400x400/3A3A3A/F5F3F0?text=Image+Not+Available';
+                        e.currentTarget.src = 'https://placehold.co/400x400/3A3A3A/F5F3F0?text=Image+Not+Available';
                       }}
                     />
                     <h4 className="text-base font-semibold mb-2 line-clamp-2" style={{ color: '#F5F3F0' }}>

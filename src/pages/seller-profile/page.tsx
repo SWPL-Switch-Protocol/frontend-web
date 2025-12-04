@@ -340,7 +340,7 @@ const SellerProfilePage = () => {
                     className="w-full rounded-xl mb-4 object-cover"
                     style={{ aspectRatio: '1/1' }}
                     onError={(e) => {
-                      e.currentTarget.src = 'https://via.placeholder.com/400x400/3A3A3A/F5F3F0?text=Image+Not+Available';
+                      e.currentTarget.src = 'https://placehold.co/400x400/3A3A3A/F5F3F0?text=Image+Not+Available';
                     }}
                   />
                   <h4 className="text-base font-semibold mb-2 line-clamp-2" style={{ color: '#F5F3F0' }}>
