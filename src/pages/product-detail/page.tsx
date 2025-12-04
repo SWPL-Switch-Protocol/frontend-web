@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../components/feature/Header';
+import AISummary from '../../components/feature/AISummary';
 
 interface ProductData {
   id: string;
@@ -524,6 +525,12 @@ export default function ProductDetail() {
 
                 {/* Buy Action */}
                 <div>
+                  <AISummary
+                    productId={product.id}
+                    productTitle={product.title}
+                    productPrice={product.price}
+                    productCondition={product.condition}
+                  />
                   <button
                     onClick={handleBuyClick}
                     className="w-full py-4 rounded-full font-bold text-base whitespace-nowrap cursor-pointer transition-all hover:opacity-90 mb-3"
@@ -763,10 +770,10 @@ export default function ProductDetail() {
 
           <div className="pt-8 border-t" style={{ borderColor: '#4A3A32' }}>
             <p className="text-center text-sm">
-              <a 
-                href="https://readdy.ai/?origin=logo" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://readdy.ai/?origin=logo"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cursor-pointer hover:opacity-80 transition-opacity"
                 style={{ color: '#D8D2CD' }}
               >
