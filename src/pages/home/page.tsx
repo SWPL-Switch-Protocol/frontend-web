@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useWeb3AuthConnect, useWeb3AuthDisconnect } from '@web3auth/modal/react';
+import { useAccount } from 'wagmi';
 
 interface ProductData {
   id: string;
@@ -22,10 +24,14 @@ export default function Home() {
   const navigate = useNavigate();
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('Brooklyn, NY');
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [walletAddress] = useState('0xA3...91c5');
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const { connect, isConnected } = useWeb3AuthConnect();
+  const { disconnect } = useWeb3AuthDisconnect();
+  const { address } = useAccount();
+
+  const shortenAddress = (addr: string | undefined) =>
+    addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : '';
 
   const getTrustColor = (level: string) => {
     switch (level) {
@@ -338,7 +344,7 @@ export default function Home() {
   ];
 
   const handleConnectWallet = () => {
-    setIsWalletConnected(true);
+    void connect();
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -361,6 +367,11 @@ export default function Home() {
   const handleProfileMenuClick = (path: string) => {
     setIsProfileOpen(false);
     navigate(path);
+  };
+
+  const handleDisconnectWallet = () => {
+    void disconnect();
+    setIsProfileOpen(false);
   };
 
   return (
@@ -436,7 +447,7 @@ export default function Home() {
           {/* Right Section */}
           <div className="flex items-center gap-4">
             {/* Sell Item Button */}
-            {isWalletConnected && (
+            {isConnected && (
               <button
                 onClick={() => navigate('/create-listing')}
                 className="px-6 py-2 rounded-full font-medium text-sm whitespace-nowrap cursor-pointer transition-all hover:brightness-110"
@@ -447,10 +458,10 @@ export default function Home() {
             )}
 
             {/* Wallet & Profile */}
-            {isWalletConnected ? (
+            {isConnected ? (
               <div className="flex items-center gap-3">
                 <span className="font-mono text-sm" style={{ color: '#F5F3F0' }}>
-                  {walletAddress}
+                  {shortenAddress(address)}
                 </span>
                 <div className="relative">
                   <button
@@ -528,10 +539,7 @@ export default function Home() {
                         Settings
                       </button>
                       <button
-                        onClick={() => {
-                          setIsWalletConnected(false);
-                          setIsProfileOpen(false);
-                        }}
+                        onClick={handleDisconnectWallet}
                         className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
                         style={{ backgroundColor: '#1F1F1F', color: '#EF4444' }}
                       >
