@@ -4,7 +4,7 @@ import type { Web3AuthContextConfig } from "@web3auth/modal/react";
 // Web3Auth React modal configuration
 // Uses sapphire_devnet as in the official quick-start
 const clientId =
-  "BHgArYmWwSeq21czpcarYh0EVq2WWOzflX-NTK-tY1-1pauPzHKRRLgpABkmYiIV_og9jAvoIxQ8L3Smrwe04Lw"; // get from https://dashboard.web3auth.io;
+  "BHgArYmWwSeq21czpcarYh0EVq2WWOzflX-NTK-tY1-1pauPzHKRRLgpABkmYiIV_og9jAvoIxQ8L3Smrwe04Lw";
 
 const web3AuthContextConfig: Web3AuthContextConfig = {
   web3AuthOptions: {
