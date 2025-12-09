@@ -3,8 +3,8 @@ import type { Web3AuthContextConfig } from "@web3auth/modal/react";
 
 // Web3Auth React modal configuration
 // Uses sapphire_devnet as in the official quick-start
-const clientId =
-  "BHgArYmWwSeq21czpcarYh0EVq2WWOzflX-NTK-tY1-1pauPzHKRRLgpABkmYiIV_og9jAvoIxQ8L3Smrwe04Lw";
+// Client ID is provided via Vite env: WEB3AUTH_CLIENT_ID=...
+const clientId = import.meta.env.WEB3AUTH_CLIENT_ID as string;
 
 const web3AuthContextConfig: Web3AuthContextConfig = {
   web3AuthOptions: {
