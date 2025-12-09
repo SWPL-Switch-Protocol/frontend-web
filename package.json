@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy:s3": "npm run build && aws s3 sync ./out s3://dev.switchprotocol.io --region ap-northeast-2 --delete",
     "preview": "vite preview"
   },
   "dependencies": {

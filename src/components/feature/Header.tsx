@@ -52,7 +52,7 @@ export default function Header() {
         <div className="flex-shrink-0">
           <a href="/" className="cursor-pointer">
             <h1 className="text-xl font-bold whitespace-nowrap" style={{ color: '#FFFFFF' }}>
-              Switch Social Market
+              Switch Social Market.io
             </h1>
           </a>
         </div>
