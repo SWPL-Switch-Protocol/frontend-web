@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../../components/feature/Header";
+import { useWeb3AuthConnect } from "@web3auth/modal/react";
+import { useAccount } from "wagmi";
 
 // Footer Component
 const Footer = () => {
@@ -119,7 +121,10 @@ const EscrowPage = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [showSuspicious, setShowSuspicious] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const { connect, isConnected } = useWeb3AuthConnect();
+  const { address } = useAccount();
 
   const productId = searchParams.get("product");
 
@@ -128,6 +133,51 @@ const EscrowPage = () => {
     { id: 2, label: "Waiting for confirmation", icon: "ri-time-line" },
     { id: 3, label: "Completed", icon: "ri-check-line" },
   ];
+  // Header 함수 안
+  const handleTestSend = async () => {
+    if (!isConnected) {
+      alert("지갑을 먼저 연결해주세요!");
+      return;
+    }
+
+    if (isCompleted) {
+      alert("Transaction already completed");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const provider = await connect(); // Web3Auth provider 반환
+
+      // 테스트용 메시지 서명 (트랜잭션 보내지 않고 모달 확인)
+      const signedMessage = await provider?.request({
+        method: "eth_sendTransaction",
+        params: [
+          {
+            from: address,
+            to: address,
+            value: "0x2386F26FC10000", // 0.01 ETH in hex
+          },
+        ],
+      });
+
+      console.log("서명 완료:", signedMessage);
+      alert("Confirm: 서명이 완료되었습니다!");
+      void handleConfirm();
+    } catch (err) {
+      console.error(err);
+      // cancel 또는 오류 처리
+      if (err?.message?.includes("User rejected")) {
+        console.log("사용자가 서명을 취소함");
+        alert("Cancel: 사용자가 서명을 취소했습니다.");
+      } else {
+        console.error("오류 발생:", err);
+        alert("Error: 서명 중 오류가 발생했습니다.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleConfirm = () => {
     if (!isConfirmed) return;
@@ -140,10 +190,35 @@ const EscrowPage = () => {
     }, 1200);
   };
 
+  const getButtonBackgroundColor = () => {
+    if (isLoading) return "#5A5A5A";
+    if (isConfirmed) return "#FF8C42";
+    return "#3A3A3A";
+  };
+
+  const getButtonTextColor = () => {
+    if (isLoading) return "#B3ADA7";
+    if (isConfirmed) return "#FFFFFF";
+    return "#8F8A84";
+  };
+
+  const getButtonOpacity = () => {
+    if (isLoading) return 0.7;
+    if (isConfirmed) return 1;
+    return 0.6;
+  };
+
+  const getButtonText = () => {
+    if (isLoading) return "Processing...";
+    if (isCompleted) return "✅ Transaction completed";
+    return "Confirm transaction";
+  };
+
   useEffect(() => {
     // Simulate waiting for other party confirmation
     const timer = setTimeout(() => {
       setIsConfirmed(true);
+      setCurrentStep(2);
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -343,18 +418,18 @@ const EscrowPage = () => {
           {/* Action Button */}
           <div className="relative mb-8">
             <button
-              onClick={handleConfirm}
+              onClick={handleTestSend}
               onMouseEnter={() => !isConfirmed && setShowTooltip(true)}
               onMouseLeave={() => setShowTooltip(false)}
-              disabled={!isConfirmed}
+              disabled={!isConfirmed || isLoading}
               className="w-full py-4 rounded-full font-semibold text-lg whitespace-nowrap cursor-pointer transition-all disabled:cursor-not-allowed"
               style={{
-                backgroundColor: isConfirmed ? "#FF8C42" : "#3A3A3A",
-                color: isConfirmed ? "#FFFFFF" : "#8F8A84",
-                opacity: isConfirmed ? 1 : 0.6,
+                backgroundColor: getButtonBackgroundColor(),
+                color: getButtonTextColor(),
+                opacity: getButtonOpacity(),
               }}
             >
-              {isCompleted ? "✅ Transaction completed" : "Confirm transaction"}
+              {getButtonText()}
             </button>
             {showTooltip && !isConfirmed && (
               <div
