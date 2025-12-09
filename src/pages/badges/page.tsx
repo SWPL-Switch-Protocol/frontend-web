@@ -80,13 +80,12 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 text-center">
-          <a 
-            href="https://readdy.ai/?origin=logo" 
-            className="text-xs cursor-pointer transition-colors hover:text-[#FF8C42]" 
+          <span 
+            className="text-xs transition-colors" 
             style={{ color: '#B3ADA7' }}
           >
             Powered by Readdy
-          </a>
+          </span>
         </div>
       </div>
     </footer>
