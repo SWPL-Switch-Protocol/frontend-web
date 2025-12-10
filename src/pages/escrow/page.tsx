@@ -190,10 +190,7 @@ const EscrowPage = () => {
         //사용할 토큰 갯수만큼만 approve 요청
         const MAX_UINT256 = 2n ** 256n - 1n;
 
-        const approveTx = await token.approve(sbtContractAddress, MAX_UINT256, {
-          maxPriorityFeePerGas: 100000000, // 최소 요구치
-          maxFeePerGas: 200000000,
-        });
+        const approveTx = await token.approve(sbtContractAddress, MAX_UINT256);
         await approveTx.wait();
       }
 
@@ -208,11 +205,7 @@ const EscrowPage = () => {
       const tx = await sbtContract.transferWithSBT(
         address,
         amountWei,
-        "https://gnfd-testnet-sp1.nodereal.io/view/metadata-bucket/SBTTransfer_meta_data.json",
-        {
-          maxPriorityFeePerGas: 100000000, // 최소 요구치
-          maxFeePerGas: 200000000,
-        }
+        "https://gnfd-testnet-sp1.nodereal.io/view/metadata-bucket/SBTTransfer_meta_data.json"
       );
 
       //Transaction 대기
