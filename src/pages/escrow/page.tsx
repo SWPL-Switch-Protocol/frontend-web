@@ -3,6 +3,12 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../../components/feature/Header";
 import { useWeb3AuthConnect } from "@web3auth/modal/react";
 import { useAccount } from "wagmi";
+import {
+  BrowserProvider,
+  Contract,
+  ethers,
+  type Eip1193Provider,
+} from "ethers";
 
 // Footer Component
 const Footer = () => {
@@ -133,6 +139,21 @@ const EscrowPage = () => {
     { id: 2, label: "Waiting for confirmation", icon: "ri-time-line" },
     { id: 3, label: "Completed", icon: "ri-check-line" },
   ];
+
+  const sbtContractAddress = "0x60E86B953f5EBA20917cF18aB96C70D076EcA5Cb";
+  const sbtTokenAddress = "0x7C4d10a7d5890786fc001bF57407e2Fbd4580293";
+
+  const erc20Abi = [
+    "function decimals() view returns (uint8)",
+    "function transfer(address to, uint256 amount) returns (bool)",
+    "function allowance(address owner, address spender) view returns (uint256)",
+    "function approve(address spender, uint256 amount) returns (bool)",
+  ];
+
+  const sbtContractAbi = [
+    "function transferWithSBT(address receiver, uint256 amount, string memory uri) external",
+  ];
+
   // Header 함수 안
   const handleTestSend = async () => {
     if (!isConnected) {
@@ -149,27 +170,65 @@ const EscrowPage = () => {
     try {
       const provider = await connect(); // Web3Auth provider 반환
 
-      // 테스트용 메시지 서명 (트랜잭션 보내지 않고 모달 확인)
-      const signedMessage = await provider?.request({
-        method: "eth_sendTransaction",
-        params: [
-          {
-            from: address,
-            to: address,
-            value: "0x2386F26FC10000", // 0.01 ETH in hex
-          },
-        ],
-      });
+      if (!provider) {
+        throw new Error("Provider not found");
+      }
 
-      console.log("서명 완료:", signedMessage);
+      const ethersProvider = new BrowserProvider(provider as Eip1193Provider);
+      const signer = await ethersProvider.getSigner();
+
+      const token = new Contract(sbtTokenAddress, erc20Abi, signer);
+
+      const decimals = await token.decimals();
+      const amountWei = ethers.parseUnits("260", decimals);
+
+      // allowance check
+      const allowed = await token.allowance(address, sbtContractAddress);
+
+      //허가된 갯수 이상인지 체크
+      if (allowed < amountWei) {
+        //사용할 토큰 갯수만큼만 approve 요청
+        const MAX_UINT256 = 2n ** 256n - 1n;
+
+        const approveTx = await token.approve(sbtContractAddress, MAX_UINT256, {
+          maxPriorityFeePerGas: 100000000, // 최소 요구치
+          maxFeePerGas: 200000000,
+        });
+        await approveTx.wait();
+      }
+
+      //Custom Function Call
+      const sbtContract = new Contract(
+        sbtContractAddress,
+        sbtContractAbi,
+        signer
+      );
+
+      //TransferWithSBT 실행
+      const tx = await sbtContract.transferWithSBT(
+        address,
+        amountWei,
+        "https://gnfd-testnet-sp1.nodereal.io/view/metadata-bucket/SBTTransfer_meta_data.json",
+        {
+          maxPriorityFeePerGas: 100000000, // 최소 요구치
+          maxFeePerGas: 200000000,
+        }
+      );
+
+      //Transaction 대기
+      const receipt = await tx.wait();
+
       alert("Confirm: 서명이 완료되었습니다!");
-      void handleConfirm();
-    } catch (err) {
-      console.error(err);
-      // cancel 또는 오류 처리
-      if (err?.message?.includes("User rejected")) {
-        console.log("사용자가 서명을 취소함");
-        alert("Cancel: 사용자가 서명을 취소했습니다.");
+      handleConfirm(receipt.hash);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        if (err.message?.includes("User rejected")) {
+          console.log("사용자가 서명을 취소함");
+          alert("Cancel: 사용자가 서명을 취소했습니다.");
+        } else {
+          console.error("오류 발생:", err);
+          alert("Error: 서명 중 오류가 발생했습니다.");
+        }
       } else {
         console.error("오류 발생:", err);
         alert("Error: 서명 중 오류가 발생했습니다.");
@@ -179,14 +238,14 @@ const EscrowPage = () => {
     }
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = (hash: string) => {
     if (!isConfirmed) return;
 
     setIsCompleted(true);
     setCurrentStep(3);
 
     setTimeout(() => {
-      navigate("/profile?from=escrow");
+      navigate("/profile?from=escrow&hash=" + hash);
     }, 1200);
   };
 
@@ -385,7 +444,7 @@ const EscrowPage = () => {
                   className="font-mono text-sm"
                   style={{ color: "#F5F3F0" }}
                 >
-                  0xA3...91c5
+                  {address}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -394,7 +453,7 @@ const EscrowPage = () => {
                   className="font-mono text-sm"
                   style={{ color: "#F5F3F0" }}
                 >
-                  0xA4...92b1
+                  {"0x96804d391383fd850cb2d632c20082780896ba01"}
                 </span>
               </div>
               <div className="flex justify-between">

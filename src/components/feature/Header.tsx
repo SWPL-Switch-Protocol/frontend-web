@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { useLocation } from "../../contexts/LocationContext";
+import { shortenAddress } from "../../utils/address";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -16,9 +17,6 @@ export default function Header() {
   const { connect, isConnected } = useWeb3AuthConnect();
   const { disconnect } = useWeb3AuthDisconnect();
   const { address } = useAccount();
-
-  const shortenAddress = (addr: string | undefined) =>
-    addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";
 
   const locations = [
     "Brooklyn, NY",

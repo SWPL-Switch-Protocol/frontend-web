@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../../components/feature/Header";
+import { copyText } from "../../utils/clipboard";
 
 // Footer Component
 const Footer = () => {
@@ -150,10 +151,12 @@ const ProfilePage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [showToast, setShowToast] = useState(false);
-  const [copiedAddress, setCopiedAddress] = useState(false);
+  const [copiedTransaction, setCopiedTransaction] = useState(false);
   const [badgePulse, setBadgePulse] = useState(false);
 
   const fromEscrow = searchParams.get("from") === "escrow";
+  const hash = searchParams.get("hash") || "";
+  const txUrl = import.meta.env.SCAN_URL + hash;
 
   useEffect(() => {
     if (fromEscrow) {
@@ -168,10 +171,12 @@ const ProfilePage = () => {
     }
   }, [fromEscrow]);
 
-  const handleCopyAddress = () => {
-    navigator.clipboard.writeText("0xA3...91c5");
-    setCopiedAddress(true);
-    setTimeout(() => setCopiedAddress(false), 2000);
+  const handleCopyTransaction = () => {
+    if (hash) {
+      void copyText(txUrl);
+    }
+    setCopiedTransaction(true);
+    setTimeout(() => setCopiedTransaction(false), 2000);
   };
 
   const recentActivities = [
@@ -239,24 +244,17 @@ const ProfilePage = () => {
                 >
                   VanillaLatte
                 </h2>
-                <div className="flex items-center gap-2">
-                  <span
-                    className="font-mono text-sm"
-                    style={{ color: "#B3ADA7" }}
+                <div className="flex items-center gap-2 mb-2">
+                  <a
+                    href={txUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm transition-opacity hover:opacity-80"
+                    style={{ color: "#60A5FA" }}
                   >
-                    0xA3...91c5
-                  </span>
-                  <button
-                    onClick={handleCopyAddress}
-                    className="w-6 h-6 flex items-center justify-center cursor-pointer transition-colors hover:text-[#FF8C42]"
-                    style={{ color: copiedAddress ? "#4CAF50" : "#8F8A84" }}
-                  >
-                    <i
-                      className={
-                        copiedAddress ? "ri-check-line" : "ri-file-copy-line"
-                      }
-                    ></i>
-                  </button>
+                    view explorer
+                    <i className="ri-external-link-line"></i>
+                  </a>
                 </div>
               </div>
 
@@ -270,6 +268,22 @@ const ProfilePage = () => {
                   ✅ Trusted Neighbor
                 </span>
               </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-sm" style={{ color: "#B3ADA7" }}>
+                txHash: {hash}
+              </span>
+              <button
+                onClick={handleCopyTransaction}
+                className="w-6 h-6 flex items-center justify-center cursor-pointer transition-colors hover:text-[#FF8C42]"
+                style={{ color: copiedTransaction ? "#4CAF50" : "#8F8A84" }}
+              >
+                <i
+                  className={
+                    copiedTransaction ? "ri-check-line" : "ri-file-copy-line"
+                  }
+                ></i>
+              </button>
             </div>
 
             <p className="text-sm" style={{ color: "#B3ADA7" }}>

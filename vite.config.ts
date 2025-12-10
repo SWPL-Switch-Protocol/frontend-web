@@ -21,6 +21,8 @@ export default defineConfig(({ mode }) => {
       "import.meta.env.WEB3AUTH_CLIENT_ID": JSON.stringify(
         env.WEB3AUTH_CLIENT_ID || ""
       ),
+      // Expose SCAN_URL to client code
+      "import.meta.env.SCAN_URL": JSON.stringify(env.SCAN_URL || ""),
     },
     plugins: [react()],
     base,
