@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../../components/feature/Header";
+import Footer from "../../components/feature/Footer";
 import { useWeb3AuthConnect } from "@web3auth/modal/react";
 import { useAccount } from "wagmi";
 import {
@@ -9,115 +10,6 @@ import {
   ethers,
   type Eip1193Provider,
 } from "ethers";
-
-// Footer Component
-const Footer = () => {
-  return (
-    <footer className="px-6 py-20" style={{ backgroundColor: "#2B2522" }}>
-      <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div>
-            <h3 className="text-xl font-bold mb-4" style={{ color: "#FF8C42" }}>
-              SWITCH SOCIAL MARKET
-            </h3>
-            <p className="text-sm" style={{ color: "#B3ADA7" }}>
-              © 2025 Switch Foundation.
-              <br />
-              All rights reserved.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4" style={{ color: "#F5F3F0" }}>
-              Switch
-            </h4>
-            <ul className="space-y-2">
-              {["About", "Team", "Vision", "Contact"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-sm cursor-pointer transition-colors hover:text-[#FF8C42]"
-                    style={{ color: "#B3ADA7" }}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4" style={{ color: "#F5F3F0" }}>
-              Community
-            </h4>
-            <ul className="space-y-2">
-              {[
-                "Discord",
-                "Telegram",
-                "Twitter(X)",
-                "Announcements",
-                "Apply as Local Leader",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-sm cursor-pointer transition-colors hover:text-[#FF8C42]"
-                    style={{ color: "#B3ADA7" }}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4" style={{ color: "#F5F3F0" }}>
-              Legal
-            </h4>
-            <ul className="space-y-2">
-              {["Terms of Service", "Privacy Policy"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-sm cursor-pointer transition-colors hover:text-[#FF8C42]"
-                    style={{ color: "#B3ADA7" }}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div
-          className="flex items-center gap-4 pt-8"
-          style={{ borderTop: "1px solid #3A3A3A" }}
-        >
-          {[
-            { icon: "ri-youtube-line", label: "YouTube" },
-            { icon: "ri-twitter-x-line", label: "X" },
-            { icon: "ri-discord-line", label: "Discord" },
-            { icon: "ri-reddit-line", label: "Reddit" },
-            { icon: "ri-github-line", label: "GitHub" },
-            { icon: "ri-telegram-line", label: "Telegram" },
-          ].map((social) => (
-            <a
-              key={social.label}
-              href="#"
-              className="w-10 h-10 flex items-center justify-center rounded-full cursor-pointer transition-colors hover:text-[#FF8C42]"
-              style={{ backgroundColor: "#3A3A3A", color: "#B3ADA7" }}
-              aria-label={social.label}
-            >
-              <i className={social.icon}></i>
-            </a>
-          ))}
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 // Main Escrow Page
 const EscrowPage = () => {
@@ -130,6 +22,7 @@ const EscrowPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const { connect, isConnected } = useWeb3AuthConnect();
+  const [myEscrowAmount, setMyEscrowAmount] = useState<string>("0");
   const { address } = useAccount();
 
   const productId = searchParams.get("product");
@@ -148,6 +41,7 @@ const EscrowPage = () => {
     "function transfer(address to, uint256 amount) returns (bool)",
     "function allowance(address owner, address spender) view returns (uint256)",
     "function approve(address spender, uint256 amount) returns (bool)",
+    "function balanceOf(address account) view returns (uint256)",
   ];
 
   const sbtContractAbi = [
@@ -203,7 +97,7 @@ const EscrowPage = () => {
 
       //TransferWithSBT 실행
       const tx = await sbtContract.transferWithSBT(
-        address,
+        "0x96804D391383fd850cb2d632C20082780896Ba01",
         amountWei,
         "https://gnfd-testnet-sp1.nodereal.io/view/metadata-bucket/SBTTransfer_meta_data.json"
       );
@@ -238,7 +132,7 @@ const EscrowPage = () => {
     setCurrentStep(3);
 
     setTimeout(() => {
-      navigate("/profile?from=escrow&hash=" + hash);
+      navigate("/escrow-success?from=escrow&hash=" + hash);
     }, 1200);
   };
 
@@ -275,6 +169,38 @@ const EscrowPage = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const getMyEscrowAmount = async () => {
+      const provider = await connect(); // Web3Auth provider 반환
+
+      if (!provider) {
+        throw new Error("Provider not found");
+      }
+
+      const ethersProvider = new BrowserProvider(provider as Eip1193Provider);
+      const signer = await ethersProvider.getSigner();
+
+      const token = new Contract(sbtTokenAddress, erc20Abi, signer);
+
+      const balance = await token.balanceOf(address);
+      const decimals = await token.decimals();
+      const balanceWithDecimals = parseFloat(
+        ethers.formatUnits(balance, decimals)
+      );
+
+      const formattedBalance = new Intl.NumberFormat("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 6,
+      }).format(balanceWithDecimals);
+
+      setMyEscrowAmount(formattedBalance);
+    };
+
+    if (address) {
+      void getMyEscrowAmount();
+    }
+  }, [address]);
 
   if (!productId) {
     return (
@@ -450,12 +376,21 @@ const EscrowPage = () => {
                 </span>
               </div>
               <div className="flex justify-between">
+                <span style={{ color: "#B3ADA7" }}>My Escrow Amount:</span>
+                <span
+                  className="font-semibold text-lg"
+                  style={{ color: "#FF8C42" }}
+                >
+                  {myEscrowAmount} SBT
+                </span>
+              </div>
+              <div className="flex justify-between">
                 <span style={{ color: "#B3ADA7" }}>Amount held:</span>
                 <span
                   className="font-semibold text-lg"
                   style={{ color: "#FF8C42" }}
                 >
-                  $260 in escrow
+                  260 SBT
                 </span>
               </div>
             </div>

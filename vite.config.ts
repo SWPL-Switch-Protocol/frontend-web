@@ -39,6 +39,13 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       host: "0.0.0.0",
       allowedHosts: ["dev.switchprotocol.io"],
+      proxy: {
+        "/api": {
+          target: env.SBT_API_URL || "",
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        },
+      },
     },
   };
 });

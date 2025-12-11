@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "../../components/feature/Header";
 import Footer from "../../components/feature/Footer";
-import ResultModal from "../../components/feature/ResultModal";
 import { copyText } from "../../utils/clipboard";
-import { useAccount } from "wagmi";
 
 // Toast Component
 const Toast = ({
@@ -47,20 +45,10 @@ const ProfilePage = () => {
   const [showToast, setShowToast] = useState(false);
   const [copiedTransaction, setCopiedTransaction] = useState(false);
   const [badgePulse, setBadgePulse] = useState(false);
-  const [didCreated, setDidCreated] = useState(false);
-  const [didCreateLoading, setDidCreateLoading] = useState(false);
-  const [issueVcLoading, setIssueVcLoading] = useState(false);
-  const [vcIssued, setVcIssued] = useState(false);
-  const [showDidModal, setShowDidModal] = useState(false);
-  const [showVcModal, setShowVcModal] = useState(false);
-  const [didResult, setDidResult] = useState<unknown>(null);
-  const [vcResult, setVcResult] = useState<unknown>(null);
-  const { address } = useAccount();
 
   const fromEscrow = searchParams.get("from") === "escrow";
   const hash = searchParams.get("hash") || "";
   const txUrl = import.meta.env.SCAN_URL + hash;
-  const sbtApiUrl = "/api";
 
   useEffect(() => {
     if (fromEscrow) {
@@ -81,82 +69,6 @@ const ProfilePage = () => {
     }
     setCopiedTransaction(true);
     setTimeout(() => setCopiedTransaction(false), 2000);
-  };
-
-  const handleDidCreate = async () => {
-    if (!address) {
-      alert("Please connect your wallet to create a DID");
-      return;
-    }
-
-    if (didCreated || didCreateLoading) return;
-
-    setDidCreateLoading(true);
-    try {
-      const response = await fetch(`${sbtApiUrl}/did/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          walletAddress: address,
-          profileData: {
-            name: "John Doe",
-            greenfieldProfileHash: "hash...",
-          },
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setDidResult(data);
-        setDidCreated(true);
-        setShowDidModal(true);
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || "Failed to create DID");
-      }
-    } catch (error) {
-      console.error(error);
-      alert(error instanceof Error ? error.message : "Failed to create DID");
-    } finally {
-      setDidCreateLoading(false);
-    }
-  };
-
-  const handleIssueVc = async () => {
-    if (!didCreated || vcIssued || issueVcLoading) return;
-
-    setIssueVcLoading(true);
-    try {
-      const response = await fetch(`${sbtApiUrl}/did/issue-vc`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          holderDid: `did:bnb:${address}`,
-          credentialSubject: {
-            age: 25,
-            location: "Brooklyn",
-          },
-        }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        setVcResult(data);
-        setVcIssued(true);
-        setShowVcModal(true);
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || "Failed to issue VC");
-      }
-    } catch (error) {
-      console.error(error);
-      alert(error instanceof Error ? error.message : "Failed to issue VC");
-    } finally {
-      setIssueVcLoading(false);
-    }
   };
 
   const recentActivities = [
@@ -204,10 +116,10 @@ const ProfilePage = () => {
               className="text-4xl font-bold mb-4"
               style={{ color: "#F5F3F0" }}
             >
-              Your profile &amp; reputation
+              Your Transaction is Success
             </h1>
             <p className="text-lg" style={{ color: "#B3ADA7" }}>
-              Reputation is stored on-chain and cannot be altered.
+              Your transaction is successful.
             </p>
           </div>
 
@@ -269,101 +181,6 @@ const ProfilePage = () => {
             <p className="text-sm" style={{ color: "#B3ADA7" }}>
               Your trust score increased after a successful transaction.
             </p>
-          </div>
-
-          {/* DID Management */}
-          <div className="mb-8">
-            <h3
-              className="text-xl font-semibold mb-4"
-              style={{ color: "#F5F3F0" }}
-            >
-              DID &amp; Verifiable Credentials
-            </h3>
-            <div
-              className="rounded-2xl p-6"
-              style={{ backgroundColor: "#1F1F1F" }}
-            >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex-1">
-                  <h4
-                    className="text-lg font-semibold mb-2"
-                    style={{ color: "#F5F3F0" }}
-                  >
-                    Decentralized Identity
-                  </h4>
-                  <p className="text-sm mb-3" style={{ color: "#B3ADA7" }}>
-                    Create your DID and issue verifiable credentials to enhance
-                    your reputation.
-                  </p>
-                  {didCreated && (
-                    <div className="flex items-center gap-2">
-                      <i
-                        className="ri-checkbox-circle-line text-lg"
-                        style={{ color: "#4CAF50" }}
-                      ></i>
-                      <span className="text-sm" style={{ color: "#4CAF50" }}>
-                        DID created successfully
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <button
-                    onClick={handleDidCreate}
-                    disabled={didCreated || didCreateLoading}
-                    className="px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap cursor-pointer transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                    style={{
-                      backgroundColor: didCreated ? "#262626" : "#FF8C42",
-                      color: didCreated ? "#8F8A84" : "#FFFFFF",
-                    }}
-                  >
-                    {didCreateLoading ? (
-                      <>
-                        <i className="ri-loader-4-line mr-2 animate-spin"></i>
-                        Creating...
-                      </>
-                    ) : didCreated ? (
-                      <>
-                        <i className="ri-check-line mr-2"></i>
-                        DID Created
-                      </>
-                    ) : (
-                      <>
-                        <i className="ri-fingerprint-line mr-2"></i>
-                        Create DID
-                      </>
-                    )}
-                  </button>
-                  <button
-                    onClick={handleIssueVc}
-                    disabled={!didCreated || vcIssued || issueVcLoading}
-                    className="px-6 py-3 rounded-full font-medium text-sm whitespace-nowrap cursor-pointer transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                    style={{
-                      backgroundColor:
-                        didCreated && !vcIssued ? "#FF8C42" : "#262626",
-                      color: didCreated && !vcIssued ? "#FFFFFF" : "#8F8A84",
-                    }}
-                  >
-                    {issueVcLoading ? (
-                      <>
-                        <i className="ri-loader-4-line mr-2 animate-spin"></i>
-                        Issuing...
-                      </>
-                    ) : vcIssued ? (
-                      <>
-                        <i className="ri-check-line mr-2"></i>
-                        VC Issued
-                      </>
-                    ) : (
-                      <>
-                        <i className="ri-file-certificate-line mr-2"></i>
-                        Issue VC
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Reputation Metrics */}
@@ -598,20 +415,6 @@ const ProfilePage = () => {
       </main>
 
       <Footer />
-
-      <ResultModal
-        isOpen={showDidModal}
-        onClose={() => setShowDidModal(false)}
-        title="DID Create Result"
-        data={didResult}
-      />
-
-      <ResultModal
-        isOpen={showVcModal}
-        onClose={() => setShowVcModal(false)}
-        title="Issue VC Result"
-        data={vcResult}
-      />
 
       <style>{`
         @keyframes slide-in-right {
