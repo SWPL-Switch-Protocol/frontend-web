@@ -226,18 +226,6 @@ const ProfilePage = () => {
                 >
                   VanillaLatte
                 </h2>
-                <div className="flex items-center gap-2 mb-2">
-                  <a
-                    href={txUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm transition-opacity hover:opacity-80"
-                    style={{ color: "#60A5FA" }}
-                  >
-                    view explorer
-                    <i className="ri-external-link-line"></i>
-                  </a>
-                </div>
               </div>
 
               <div
@@ -250,22 +238,6 @@ const ProfilePage = () => {
                   ✅ Trusted Neighbor
                 </span>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-sm" style={{ color: "#B3ADA7" }}>
-                txHash: {hash}
-              </span>
-              <button
-                onClick={handleCopyTransaction}
-                className="w-6 h-6 flex items-center justify-center cursor-pointer transition-colors hover:text-[#FF8C42]"
-                style={{ color: copiedTransaction ? "#4CAF50" : "#8F8A84" }}
-              >
-                <i
-                  className={
-                    copiedTransaction ? "ri-check-line" : "ri-file-copy-line"
-                  }
-                ></i>
-              </button>
             </div>
 
             <p className="text-sm" style={{ color: "#B3ADA7" }}>

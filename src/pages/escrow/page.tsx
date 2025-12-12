@@ -381,7 +381,7 @@ const EscrowPage = () => {
                   className="font-semibold text-lg"
                   style={{ color: "#FF8C42" }}
                 >
-                  {myEscrowAmount} SBT
+                  {myEscrowAmount} SWC
                 </span>
               </div>
               <div className="flex justify-between">
@@ -390,7 +390,7 @@ const EscrowPage = () => {
                   className="font-semibold text-lg"
                   style={{ color: "#FF8C42" }}
                 >
-                  260 SBT
+                  260 SWC
                 </span>
               </div>
             </div>
