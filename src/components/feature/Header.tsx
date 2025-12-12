@@ -194,19 +194,19 @@ export default function Header() {
                       My profile
                     </button>
                     <button
-                      onClick={() => handleProfileMenuClick("/profile")}
+                      onClick={() => handleProfileMenuClick("/messages")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
                       style={{ backgroundColor: "#1F1F1F", color: "#F5F3F0" }}
                     >
-                      My reputation
+                      Messages
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => handleProfileMenuClick("/sales-dashboard")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
                       style={{ backgroundColor: "#1F1F1F", color: "#F5F3F0" }}
                     >
                       Sales dashboard ✅
-                    </button>
+                    </button> */}
                     <button
                       onClick={() => handleProfileMenuClick("/listings")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
@@ -214,13 +214,13 @@ export default function Header() {
                     >
                       My listings
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => handleProfileMenuClick("/dao")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
                       style={{ backgroundColor: "#1F1F1F", color: "#F5F3F0" }}
                     >
                       DAO access
-                    </button>
+                    </button> */}
                     <button
                       onClick={() => handleProfileMenuClick("/dao-space")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
@@ -229,14 +229,14 @@ export default function Header() {
                       My proposals
                     </button>
                     <button
-                      onClick={() => handleProfileMenuClick("/profile")}
+                      onClick={() => handleProfileMenuClick("/badges")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
                       style={{ backgroundColor: "#1F1F1F", color: "#F5F3F0" }}
                     >
                       My badges
                     </button>
                     <button
-                      onClick={() => handleProfileMenuClick("/profile")}
+                      onClick={() => handleProfileMenuClick("/settings")}
                       className="w-full text-left px-4 py-3 text-sm cursor-pointer transition-all hover:brightness-110"
                       style={{ backgroundColor: "#1F1F1F", color: "#F5F3F0" }}
                     >

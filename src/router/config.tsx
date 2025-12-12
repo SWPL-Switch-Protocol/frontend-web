@@ -1,5 +1,7 @@
 import { lazy } from "react";
-import { RouteObject } from "react-router-dom";
+import type { RouteObject } from "react-router-dom";
+import MessagesPage from "../pages/messages/page";
+import SettingsPage from "../pages/settings/page";
 
 const HomePage = lazy(() => import("../pages/home/page"));
 const ListingsPage = lazy(() => import("../pages/listings/page"));
@@ -18,11 +20,16 @@ const QuestPage = lazy(() => import("../pages/quest/page"));
 const BadgesPage = lazy(() => import("../pages/badges/page"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 const EscrowSuccessPage = lazy(() => import("../pages/escrow-success/page"));
+const InquiryPage = lazy(() => import("../pages/inquiry/page"));
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <HomePage />,
+  },
+  {
+    path: "/settings",
+    element: <SettingsPage />,
   },
   {
     path: "/listings",
@@ -33,12 +40,20 @@ const routes: RouteObject[] = [
     element: <ProductDetailPage />,
   },
   {
+    path: "/inquiry",
+    element: <InquiryPage />,
+  },
+  {
     path: "/escrow",
     element: <EscrowPage />,
   },
   {
     path: "/escrow-success",
     element: <EscrowSuccessPage />,
+  },
+  {
+    path: "/messages",
+    element: <MessagesPage />,
   },
   {
     path: "/profile",

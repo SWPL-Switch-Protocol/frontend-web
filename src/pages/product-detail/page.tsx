@@ -683,6 +683,17 @@ export default function ProductDetail() {
                   >
                     Buy with Escrow
                   </button>
+                  <button
+                    onClick={() => navigate(`/inquiry?product=${id}`)}
+                    className="w-full py-4 rounded-full font-bold text-base whitespace-nowrap cursor-pointer transition-all hover:brightness-110 mb-3"
+                    style={{
+                      backgroundColor: "#262626",
+                      color: "#F5F3F0",
+                      height: "54px",
+                    }}
+                  >
+                    Ask Seller
+                  </button>
 
                   <p
                     className="text-xs text-center"
