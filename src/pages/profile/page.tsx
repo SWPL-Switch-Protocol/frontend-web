@@ -55,6 +55,7 @@ const ProfilePage = () => {
   const [showVcModal, setShowVcModal] = useState(false);
   const [didResult, setDidResult] = useState<unknown>(null);
   const [vcResult, setVcResult] = useState<unknown>(null);
+  const [didTxUrl, setDidTxUrl] = useState<string>("");
   const { address } = useAccount();
 
   const fromEscrow = searchParams.get("from") === "escrow";
@@ -110,6 +111,7 @@ const ProfilePage = () => {
       if (response.ok) {
         const data = await response.json();
         setDidResult(data);
+        setDidTxUrl(import.meta.env.SCAN_URL + data.txHash);
         setDidCreated(true);
         setShowDidModal(true);
       } else {
@@ -304,6 +306,16 @@ const ProfilePage = () => {
                       <span className="text-sm" style={{ color: "#4CAF50" }}>
                         DID created successfully
                       </span>
+                      <a
+                        href={didTxUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm transition-opacity hover:opacity-80"
+                        style={{ color: "#60A5FA" }}
+                      >
+                        view explorer
+                        <i className="ri-external-link-line"></i>
+                      </a>
                     </div>
                   )}
                 </div>
